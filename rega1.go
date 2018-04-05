@@ -66,9 +66,7 @@ func poregtonfa(pofix string) *nfa{
 		}/// switch
 	}// for 
 
-	/*if len(nfastack) != 1 {
-		fmt.Println("Uh oh!", len(nfastack), nfastack)
-	}// if*/
+	
 
 	return nfastack[0]
 }// poregtonfa
@@ -155,7 +153,7 @@ func runProg(){
 	var test string
 	
 	fmt.Println("Please enter the condition")
-	//fmt.Print("----")
+	
 	fmt.Scanln(&condition)
 
 	for _, r := range condition {
@@ -166,7 +164,7 @@ func runProg(){
 
 	}// for
 	fmt.Println("Please enter the test String")
-	//fmt.Print("-> ")
+	
 	fmt.Scanln(&test)
 	fmt.Print("\n\n")
 
