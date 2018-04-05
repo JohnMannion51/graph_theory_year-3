@@ -23,22 +23,24 @@ func poregtonfa(pofix string) *nfa{
 
 	for _, r :=  range pofix {
 		switch r {
-		case '.':
+		case '.'://if the character = '.'
 			frag2 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
+			//nfa stack is updated
 			frag1 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
-
+			//nfa stack is updated
 			frag1.accept.edge1 = frag2.initial
-
+			//push a new fragment to the stack,
 			nfastack = append(nfastack, &nfa{initial: frag1.initial, accept: frag2.accept})
 			// case .
-		case '|':
+		case '|'://if the character = '|'
 			frag2 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
+			//nfa stack is updated
 			frag1 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
-
+			//nfa stack is updated
 			accept := state{}
 			initial := state{edge1: frag1.initial, edge2: frag2.initial}
 			frag1.accept.edge1 = &accept
@@ -47,10 +49,10 @@ func poregtonfa(pofix string) *nfa{
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 
 			// case |
-		case '*':
+		case '*'://if the character = '*'
 			frag := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
-
+			//nfa stack is updated
 			accept := state{}
 			initial := state{edge1: frag.initial, edge2: &accept}
 			frag.accept.edge1 = frag.initial
@@ -58,6 +60,18 @@ func poregtonfa(pofix string) *nfa{
 
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 			// case *
+
+		case '+'://if the character = '+'
+			frag := nfastack[len(nfastack)-1]
+			//the variable frag is assigned the value "+" of the nfastack array
+			accept := state{}
+			initial := state{edge1: frag.initial, edge2: &accept}
+
+			frag.accept.edge1 = &initial
+
+			nfastack = append(nfastack, &nfa{initial: frag.initial, accept: &accept})
+
+
 		default:
 			accept := state{}
 			initial := state{symbol: r ,edge1: &accept}
@@ -151,7 +165,7 @@ func intopost(infix string) string{
 func runProg(){
 	var condition string
 	var test string
-	
+	//prompt for user input
 	fmt.Println("Please enter the condition")
 	
 	fmt.Scanln(&condition)
@@ -169,7 +183,7 @@ func runProg(){
 	fmt.Print("\n\n")
 
 	//Our test String
-	fmt.Printf("The string %s is : %t\n\n", test, pomatch(condition, test))
+	fmt.Printf("The string %s condition is : %t\n\n", test, pomatch(condition, test))
 	fmt.Println()
 }// runProg
 func main(){
