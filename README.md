@@ -10,17 +10,17 @@ To run the code in this repository, the files must first be compiled. The Go [co
 must first be installed on your machine. Once that is installed, the code can be compiled and run by following these steps. 
 We assume you are using the command line or alternatively you can use [cmder](https://cmder.en.softonic.com/).
 
-## Clone this repository from Github.
-1. git clone https://github.com/JohnMannion51/graph_theory_year-3.git
+## Clone the repository from Github
+1. git clone https://github.com/JohnMannion51/graph_theory_year-3.git.
 Change into the folder.
-2. cd rega1.go
+2. cd rega1.go .
 Compile the first file with the following command.
-3. go build rega1.go
+3. go build rega1.go .
 (this will produce an executable file)
 Run the executable produced.
-4. rega1.exe
+4. rega1.exe .
 
-#The Project Outlay
+# The Project Outlay
 
 You must write a program in the Go programming language [2] that can
 build a non-deterministic finite automaton (NFA) from a regular expression,
@@ -39,7 +39,7 @@ You are expected to be able to break this project into a number of smaller
 tasks that are easier to solve, and to plug these together after they have been
 completed. 
 
-##You might do that for this project as follows:
+## You might do that for this project as follows:
 1. Parse the regular expression from infix to postfix notation.
 2. Build a series of small NFA’s for parts of the regular expression.
 3. Use the smaller NFA’s to create the overall NFA.
