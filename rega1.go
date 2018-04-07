@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"os"
+	"fmt" // allows user input
+	"os"  // exits programm
 )// imports
 
 type state struct{
@@ -24,23 +24,27 @@ func poregtonfa(pofix string) *nfa{
 	for _, r :=  range pofix {
 		switch r {
 		case '.'://if the character = '.'
+		    //pops the last nfa off the stack
 			frag2 := nfastack[len(nfastack)-1]
+			// sets stack to accept all but last element
 			nfastack = nfastack[:len(nfastack)-1]
 			//nfa stack is updated
 			frag1 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
-			//nfa stack is updated
+			// frag1 points to frag2
 			frag1.accept.edge1 = frag2.initial
 			//push a new fragment to the stack,
 			nfastack = append(nfastack, &nfa{initial: frag1.initial, accept: frag2.accept})
-			// case .
+			// case '.'
 		case '|'://if the character = '|'
+			//pops the last nfa off the stack
 			frag2 := nfastack[len(nfastack)-1]
+			// sets stack to accept all but last element
 			nfastack = nfastack[:len(nfastack)-1]
 			//nfa stack is updated
 			frag1 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
-			//nfa stack is updated
+			//state is now empty
 			accept := state{}
 			initial := state{edge1: frag1.initial, edge2: frag2.initial}
 			frag1.accept.edge1 = &accept
@@ -48,22 +52,25 @@ func poregtonfa(pofix string) *nfa{
 
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 
-			// case |
+			// case '|'
 		case '*'://if the character = '*'
+			//pops the last nfa off the stack
 			frag := nfastack[len(nfastack)-1]
+			// sets stack to accept all but last element
 			nfastack = nfastack[:len(nfastack)-1]
-			//nfa stack is updated
+			//state is now empty
 			accept := state{}
 			initial := state{edge1: frag.initial, edge2: &accept}
 			frag.accept.edge1 = frag.initial
 			frag.accept.edge2 = &accept
 
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
-			// case *
+			// case '*'
 
 		case '+'://if the character = '+'
+			//pops the last nfa off the stack
 			frag := nfastack[len(nfastack)-1]
-			//the variable frag is assigned the value "+" of the nfastack array
+			//state is now empty
 			accept := state{}
 			initial := state{edge1: frag.initial, edge2: &accept}
 
@@ -71,8 +78,9 @@ func poregtonfa(pofix string) *nfa{
 
 			nfastack = append(nfastack, &nfa{initial: frag.initial, accept: &accept})
 
-
+			// case '+'
 		default:
+			//empty state for accept
 			accept := state{}
 			initial := state{symbol: r ,edge1: &accept}
 
@@ -190,7 +198,7 @@ func main(){
 	
 	for {
 		var input string
-
+		//Menu options
 		fmt.Println("Please choose an option")
 		fmt.Println("1: Test a Condition")
 		fmt.Println("2: Exit")
@@ -204,7 +212,7 @@ func main(){
 			//Run the test
 			runProg()
 		case "2":
-			//Close the program
+			//Exits the program
 			os.Exit(3)
 		default:
 			fmt.Println("Invalid input")
