@@ -11,18 +11,27 @@ must first be installed on your machine. Once that is installed, the code can be
 We assume you are using the command line or alternatively you can use [cmder](https://cmder.en.softonic.com/).
 
 ## Clone the repository from Github
-1. git clone https://github.com/JohnMannion51/graph_theory_year-3.git.
-Change into the folder.
-2. cd rega1.go .
-Compile the first file with the following command.
-3. go build rega1.go .
-(this will produce an executable file)
-Run the executable produced.
-4. rega1.exe .
 
-# The Project Outlay
+1. git clone https://github.com/JohnMannion51/graph_theory_year-3.git
 
-You must write a program in the Go programming language [2] that can
+2. Change to the folder "graph_theory_year-3" 
+
+3. Compile the file "go build rega1.go"
+
+4. Run the executable "rega1.exe"
+
+5. Choose an option 1(to start)or 2(to exit)
+
+6. Enter the expression i.e. a*b
+
+7. Enter the string to compare i.e. abb
+
+8. The user will get an answer stating "true or false"
+
+
+# The Project Goals
+
+You must write a program in the Go programming language that can
 build a non-deterministic finite automaton (NFA) from a regular expression,
 and can use the NFA to check if the regular expression matches any given
 string of text. You must write the program from scratch and cannot use the
@@ -45,3 +54,24 @@ completed.
 3. Use the smaller NFA’s to create the overall NFA.
 4. Implement the matching algorithm using the NFA.
 
+
+# Helpful resources
+
+Throughout the course of this semester our lecturer, Dr. Ian McLoughlin, provided some extremely 
+helpful videos to aid us in our project. 
+
+[Helpful video resources](https://www.youtube.com/watch?v=4bjqVsoy6bA)
+
+[Shunting Yard Algorithm](https://brilliant.org/wiki/shunting-yard-algorithm/) 
+
+[Deterministic Finite Automata Example](https://www.tutorialspoint.com/automata_theory/deterministic_finite_automaton.htm)
+
+[Non-Deterministic Finite Automata NFA Example](https://www.tutorialspoint.com/automata_theory/non_deterministic_finite_automaton.htm)
+
+[Thompson's Regular Expression Explaination](https://swtch.com/~rsc/regexp/regexp1.html)
+
+[NFA using java](https://algs4.cs.princeton.edu/54regexp/NFA.java.html)
+
+[Regular exp to nfa c++](http://cplusplus.happycodings.com/algorithms/code21.html)
+
+[Python example](https://www.ics.uci.edu/~eppstein/PADS/Automata.py)
